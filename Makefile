@@ -6,7 +6,7 @@
 #    By: oubelhaj <oubelhaj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/04 09:25:05 by oubelhaj          #+#    #+#              #
-#    Updated: 2022/11/04 09:33:18 by oubelhaj         ###   ########.fr        #
+#    Updated: 2022/11/04 22:50:25 by oubelhaj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CFLAGS = -Wall -Wextra -Werror
 all : ${NAME}
 
 ${NAME}: ${OBJS}
-	ar r ${NAME} ${OBJS}
+	ar rc ${NAME} ${OBJS}
 	
 clean:
 	rm -f ${OBJS}

@@ -6,13 +6,13 @@
 /*   By: oubelhaj <oubelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 19:53:28 by oubelhaj          #+#    #+#             */
-/*   Updated: 2022/11/04 10:01:21 by oubelhaj         ###   ########.fr       */
+/*   Updated: 2022/11/05 05:17:26 by oubelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	check(char c, va_list p, int *count)
+static void	check_c(char c, va_list p, int *count)
 {
 	if (c == 'i' || c == 'd')
 		ft_putnbr(va_arg(p, int), count);
@@ -23,7 +23,10 @@ static void	check(char c, va_list p, int *count)
 	else if (c == 'x' || c == 'X')
 		print_hex(va_arg(p, unsigned int), c, count);
 	else if (c == 'p')
-		print_address(va_arg(p, unsigned long), 1, count);
+	{
+		ft_putstr("0x", count);
+		print_address(va_arg(p, unsigned long), count);
+	}
 	else if (c == 'u')
 		print_unsigned(va_arg(p, unsigned int), count);
 	else if (c == '%')
@@ -41,10 +44,12 @@ int	ft_printf(const char *str, ...)
 	va_start(p, str);
 	while (str[i])
 	{
-		if (str[i] == '%')
+		if (str[i] == '%' && str[i + 1] == '\0')
+			return (count);
+		else if (str[i] == '%')
 		{
 			i++;
-			check(str[i], p, &count);
+			check_c(str[i], p, &count);
 		}
 		else
 			ft_putchar(str[i], &count);
@@ -53,3 +58,10 @@ int	ft_printf(const char *str, ...)
 	va_end(p);
 	return (count);
 }
+
+// int main()
+// {
+// 	ft_printf("%d\n%s\n%c\n%i\n%x\n%X\n%u\n%p\n%%", 69, "sixnine", 'b', -69, 42, 42, 69, &i);
+// 	ft_printf("%d\n%s\n%c\n%i\n%x\n%X\n%u\n%p\n%%", 69, "sixnine", 'b', -69, 42, 42, 69, &i);
+// 	printf("%d\n%s\n%c\n%i\n%x\n%X\n%u\n%p\n%%", 69, "sixnine", 'b', -69, 42, 42, 69, &i);
+// }
