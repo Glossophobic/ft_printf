@@ -6,7 +6,7 @@
 /*   By: oubelhaj <oubelhaj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 19:53:28 by oubelhaj          #+#    #+#             */
-/*   Updated: 2022/11/05 05:17:26 by oubelhaj         ###   ########.fr       */
+/*   Updated: 2022/11/07 09:46:25 by oubelhaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,3 @@ int	ft_printf(const char *str, ...)
 	va_end(p);
 	return (count);
 }
-
-// int main()
-// {
-// 	ft_printf("%d\n%s\n%c\n%i\n%x\n%X\n%u\n%p\n%%", 69, "sixnine", 'b', -69, 42, 42, 69, &i);
-// 	ft_printf("%d\n%s\n%c\n%i\n%x\n%X\n%u\n%p\n%%", 69, "sixnine", 'b', -69, 42, 42, 69, &i);
-// 	printf("%d\n%s\n%c\n%i\n%x\n%X\n%u\n%p\n%%", 69, "sixnine", 'b', -69, 42, 42, 69, &i);
-// }
